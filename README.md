@@ -34,8 +34,8 @@ Add a little CSS:
 And then trigger it with JavaScript:
 
 ```javascript
-var main_scenery = new Scenery('main');
-main_scenery.begin();
+var main = new Scenery('main');
+main.begin();
 ```
 
 ### What's going on here?
