@@ -132,7 +132,7 @@ The duration, in miliseconds, to wait between scene changes.
 
 #### data-scenery-scene="number"
 
-Associates the element with a scene.
+Associates the element with a scene. If this attribute is missing, scenery.js _will not_ animate this element.
 
 #### data-scenery-sequence="number"
 
