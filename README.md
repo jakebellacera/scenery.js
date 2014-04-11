@@ -183,6 +183,8 @@ Initializes a new Scenery by searching the DOM for an element with a
 argument, then settings can be set. Please refer to the [settings instance 
 attribute](#settings) for the list of settings that can be set.
 
+If scenery.js could not find your Scenery element, then this method will return `null`.
+
 **The Scenery element will emit a `scenery:initialized` event once the Scenery
 object finishes initializing.**
 
@@ -205,6 +207,8 @@ Pauses the animation sequence if it is currently running. If the Scenery is
 paused in a middle of a sequence, then the sequence will complete and then 
 the Scenery will pause.
 
+If the Scenery was already paused when this method was ran, nothing will happen.
+
 **The Scenery element will emit a `scenery:paused` event once the sequence has
 been paused.**
 
@@ -220,6 +224,8 @@ resumes playing.**
 Returns `true` or `false`, depending on whether the animation sequence has been
 paused or not.
 
+Because Scenery can only pause after an animation has _completed_, you may be succeptable to race conditions. If timing is important to you, consider binding to the Scenery element's `scenery:paused` and `scenery:resumed` events instead.
+
 #### currentScene()
 
 Returns a number representing the index of the current scene.
@@ -231,7 +237,7 @@ the scene does not exist.
 
 #### end(playAnimations = false)
 
-Ends a Scenery prematurely. If `playAnimations` is set to true, then all of the
+Ends a Scenery animation prematurely. If `playAnimations` is set to true, then all of the
 elements will animate at once.
 
 **The Scenery element will emit a `scenery:ended` event once the Scenery ends.**
