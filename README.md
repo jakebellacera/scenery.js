@@ -289,7 +289,7 @@ Emitted after the Scenery object begins animating.
 
 Additional data passed into the `event.detail` object are:
 
-* `initialScene` - (_Number_) the index of the initial scene. Do note that this index is _one-based_, so the index will start at 1.
+* `sceneIndex` - (_Number_) the index of the current scene. Do note that this index is _zero-based_, so the index will start at 0.
 
 #### scenery:ended
 
@@ -301,8 +301,8 @@ Emitted when the Scenery animation sequence is paused.
 
 Additional data passed into the `event.detail` object are:
 
-* `currentScene` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
-* `currentSequence` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
+* `sceneIndex` - (_Number_) the index of the current scene. Do note that this index is _zero-based_, so the index will start at 0.
+* `sequenceIndex` - (_Number_) the index of the current sequence. Do note that this index is _zero-based_, so the index will start at 0.
 
 #### scenery:resumed
 
@@ -314,7 +314,7 @@ Emitted when the Scenery sequences to a new scene.
 
 Additional data passed into the `event.detail` object are:
 
-* `currentScene` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
+* `sceneIndex` - (_Number_) the index of the scene that is being changed. Do note that this index is _zero-based_, so the index will start at 0.
 
 ### Sequence elements
 
@@ -322,9 +322,21 @@ Additional data passed into the `event.detail` object are:
 
 Emitted when the element is sequenced in. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
 
+Additional data passed into the `event.detail` object are:
+
+* `sceneIndex` - (_Number_) the index of the current scene. Do note that this index is _zero-based_, so the index will start at 0.
+* `sequenceIndex` - (_Number_) the index of the current sequence. Do note that this index is _zero-based_, so the index will start at 0.
+* `elements` - (_NodeList_) the list of elements that are being sequenced.
+
 #### scenery:sequenced:out
 
-Emitted when the element is sequenced out. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
+Emitted when the sequence is being animated out. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
+
+Additional data passed into the `event.detail` object are:
+
+* `sceneIndex` - (_Number_) the index of the current scene. Do note that this index is _zero-based_, so the index will start at 0.
+* `sequenceIndex` - (_Number_) the index of the current sequence. Do note that this index is _zero-based_, so the index will start at 0.
+* `elements` - (_NodeList_) the list of elements that are being sequenced.
 
 Contributing
 ------------
