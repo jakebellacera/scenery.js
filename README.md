@@ -280,12 +280,16 @@ Emitted after the Scenery object is initialized.
 #### scenery:destroyed
 
 Emitted after the Scenery object is destroyed. If the Scenery element is going
-to be removed from the DOM in addition, then the event will emit right before
+to be removed from the DOM in addition to the Scenery object being destroyed, then the event will emit right before
 the element is deleted.
 
 #### scenery:began
 
 Emitted after the Scenery object begins animating.
+
+Additional data passed into the `event.detail` object are:
+
+* `initialScene` - (_Number_) the index of the initial scene. Do note that this index is _one-based_, so the index will start at 1.
 
 #### scenery:ended
 
@@ -295,6 +299,11 @@ Emitted after the Scenery object ends the animation sequence.
 
 Emitted when the Scenery animation sequence is paused.
 
+Additional data passed into the `event.detail` object are:
+
+* `currentScene` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
+* `currentSequence` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
+
 #### scenery:resumed
 
 Emitted when the Scenery animation sequence is resumed from a pause.
@@ -303,15 +312,19 @@ Emitted when the Scenery animation sequence is resumed from a pause.
 
 Emitted when the Scenery sequences to a new scene.
 
+Additional data passed into the `event.detail` object are:
+
+* `currentScene` - (_Number_) the index of the current scene. Do note that this index is _one-based_, so the index will start at 1.
+
 ### Sequence elements
 
 #### scenery:sequenced:in
 
-Emitted when the element is sequenced in.
+Emitted when the element is sequenced in. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
 
 #### scenery:sequenced:out
 
-Emitted when the element is sequenced out.
+Emitted when the element is sequenced out. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
 
 Contributing
 ------------
