@@ -119,16 +119,19 @@ HTML data-attribute methods
 
 ### Scenery elements
 
+Scenery elements are elements that contain scenes. All elements that will be animated within the Scenery must be a child of this element.
+
 #### data-scenery="string"
 
-Establishes the element as a Scenery. All elements that will be animated within
-the scene much be a child of this element.
+Establishes the element as a Scenery. If this attribute is missing, scenery.js will not be able to find this element.
 
 #### data-scenery-delay-duration="number"
 
-The duration, in miliseconds, to wait between scene changes.
+The duration—in miliseconds—to wait between scene changes.
 
 ### Scene elements
+
+Scene elements are the individual elements that will be animated. They _must_ be a child descendant of a Scenery element.
 
 #### data-scenery-scene="number"
 
