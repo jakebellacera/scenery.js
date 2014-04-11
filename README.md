@@ -7,6 +7,54 @@ configuration and *no* exterior libraries. All configuration is done via HTML
 This makes scenery.js ideal for situations like HTML5 banners where sizes is
 important and configuration via JavaScript can be tedious.
 
+Table of Contents
+-----------------
+
+- [scenery.js](#sceneryjs)
+  - [Getting started](#getting-started)
+    - [What's going on here?](#whats-going-on-here)
+    - [Sequencing scenes](#sequencing-scenes)
+    - [Animations are handled with CSS](#animations-are-handled-with-css)
+  - [Browser Support](#browser-support)
+  - [HTML data-attribute methods](#html-data-attribute-methods)
+    - [Scenery element attributes](#scenery-element-attributes)
+      - [data-scenery](#data-scenerystring)
+      - [data-scenery-delay-duration](#data-scenery-delay-durationnumber)
+    - [Scene element attributes](#scene-element-attributes)
+      - [data-scenery-secene](#data-scenery-scenenumber)
+      - [data-scenery-sequence](#data-scenery-sequencenumber)
+      - [data-scenery-animate-in](#data-scenery-animate-instring)
+      - [data-scenery-animate-out](#data-scenery-animate-outstring)
+      - [data-scenery-animation-duration](#data-scenery-animation-durationnumber)
+  - [JavaScript API](#javascript-api)
+    - [Constructor methods](#constructor-methods)
+      - [new](#new-sceneryname-settings)
+    - [Instance methods](#instance-methods)
+      - [begin](#beginscene)
+      - [pause()](#pause)
+      - [resume()](#resume)
+      - [paused()](#paused)
+      - [currentScene()](#currentscene)
+      - [elementsInScene(number)](#elementsinscenenumber)
+      - [end(playAnimations = false)](#endplayanimations-=-false)
+      - [destroy(removeElements = false)](#destroyremoveelements-=-false)
+    - [Instance properties](#instance-properties)
+      - [settings](#settings=)
+  - [JavaScript Events](#javascript-events)
+    - [Scenery element events](#scenery-element-events)
+      - [scenery:initialized](#sceneryinitialized)
+      - [scenery:destroyed](#scenerydestroyed)
+      - [scenery:began](#scenerybegan)
+      - [scenery:ended](#sceneryended)
+      - [scenery:paused](#scenerypaused)
+      - [scenery:resumed](#sceneryresumed)
+      - [scenery:scene:changed](#sceneryscenechanged)
+    - [Sequence element events](#sequence-element-events)
+      - [scenery:sequenced:in](#scenerysequencedin)
+      - [scenery:sequenced:out](#scenerysequencedout)
+  - [Contributing](#contributing)
+  - [Suggestions, feedback and bug reports](#suggestions-feedback-and-bug-reports)
+
 Getting started
 ---------------
 
@@ -52,8 +100,7 @@ After a scene has been sequenced and another scene is queued to play, Scenery
 delays for as many miliseconds that are specified in
 `data-scenery-delay-duration`.
 
-Sequencing scenes
------------------
+### Sequencing scenes
 
 In addition to sequencing scenes in a scenery, individual scenes can also be
 sequenced. By default, when multiple elements are in the same scene, they
@@ -72,8 +119,7 @@ In addition, multiple elements can share the same sequence within a scene. If
 two or more elements share the same sequence, then their animation will trigger
 at the same time. By default, all elements in a scene are on the first sequence.
 
-Animations are handled with CSS
--------------------------------
+### Animations are handled with CSS
 
 We use CSS for animations because CSS _is_ where the animations should be
 specified. scenery.js listens for `transitionend` events to be fired and
@@ -117,7 +163,7 @@ their turn to be animated. caniuse.com maintains lists of browsers that support
 HTML data-attribute methods
 ---------------------------
 
-### Scenery elements
+### Scenery element attributes
 
 Scenery elements are elements that contain scenes. All elements that will be animated within the Scenery must be a child of this element.
 
@@ -129,7 +175,7 @@ Establishes the element as a Scenery. If this attribute is missing, scenery.js w
 
 The duration—in miliseconds—to wait between scene changes.
 
-### Scene elements
+### Scene element attributes
 
 Scene elements are the individual elements that will be animated. They _must_ be a child descendant of a Scenery element.
 
@@ -168,8 +214,8 @@ only interpreted by browsers that do not support CSS animations or CSS
 transitions. Please refer to the [Browser Support](#browser-support) section for
 more details.
 
-JavaScript Methods
-------------------
+JavaScript API
+--------------
 
 In addition to the HTML `data`-attribute options, scenery.js offers a robust
 JavaScript API.
@@ -316,7 +362,7 @@ Additional data passed into the `event.detail` object are:
 
 * `sceneIndex` - (_Number_) the index of the scene that is being changed. Do note that this index is _zero-based_, so the index will start at 0.
 
-### Sequence elements
+### Sequence element events
 
 #### scenery:sequenced:in
 
