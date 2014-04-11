@@ -19,7 +19,7 @@ Table of Contents
   - [Scenery element attributes](#scenery-element-attributes)
     - [data-scenery](#data-scenerystring)
     - [data-scenery-delay-duration](#data-scenery-delay-durationnumber)
-  - [Scene element attributes](#scene-element-attributes)
+  - [Sequence element attributes](#sequence-element-attributes)
     - [data-scenery-secene](#data-scenery-scenenumber)
     - [data-scenery-sequence](#data-scenery-sequencenumber)
     - [data-scenery-animate-in](#data-scenery-animate-instring)
@@ -29,16 +29,16 @@ Table of Contents
   - [Constructor methods](#constructor-methods)
     - [new](#new-sceneryname-settings)
   - [Instance methods](#instance-methods)
-    - [begin](#beginscene)
+    - [begin()](#beginscene)
     - [pause()](#pause)
     - [resume()](#resume)
     - [paused()](#paused)
     - [currentScene()](#currentscene)
     - [elementsInScene(number)](#elementsinscenenumber)
-    - [end(playAnimations = false)](#endplayanimations-=-false)
-    - [destroy(removeElements = false)](#destroyremoveelements-=-false)
+    - [end(playAnimations = false)](#endplayanimations--false)
+    - [destroy(removeElements = false)](#destroyremoveelements--false)
   - [Instance properties](#instance-properties)
-    - [settings](#settings=)
+    - [settings](#settings)
 - [JavaScript Events](#javascript-events)
   - [Scenery element events](#scenery-element-events)
     - [scenery:initialized](#sceneryinitialized)
@@ -164,7 +164,7 @@ HTML data-attribute methods
 
 ### Scenery element attributes
 
-Scenery elements are elements that contain scenes. All elements that will be animated within the Scenery must be a child of this element.
+Scenery elements are elements that contain scenes and elements that will be sequenced. All elements that will be animated within the Scenery must be a child of this element.
 
 #### data-scenery="string"
 
@@ -174,9 +174,9 @@ Establishes the element as a Scenery. If this attribute is missing, scenery.js w
 
 The duration—in miliseconds—to wait between scene changes.
 
-### Scene element attributes
+### Sequence element attributes
 
-Scene elements are the individual elements that will be animated. They _must_ be a child descendant of a Scenery element.
+Sequence elements are the individual elements that will be animated. They _must_ be a child descendant of a Scenery element.
 
 #### data-scenery-scene="number"
 
@@ -316,7 +316,7 @@ JavaScript Events
 
 scenery.js is event-driven, so there are plenty of events to listen to.
 
-### Scenery element
+### Scenery element events
 
 #### scenery:initialized
 
@@ -363,9 +363,11 @@ Additional data passed into the `event.detail` object are:
 
 ### Sequence element events
 
+All Sequence element events bubble up to the Scenery element, so if you want to listen to all events, simply listen to the events listed below on the Scenery element.
+
 #### scenery:sequenced:in
 
-Emitted when the element is sequenced in. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
+Emitted when the element is sequenced in.
 
 Additional data passed into the `event.detail` object are:
 
@@ -375,7 +377,7 @@ Additional data passed into the `event.detail` object are:
 
 #### scenery:sequenced:out
 
-Emitted when the sequence is being animated out. Do note that this event will bubble up to the Scenery element, so you can listen for all sequences on the Scenery element if needed.
+Emitted when the sequence is being animated out.
 
 Additional data passed into the `event.detail` object are:
 
