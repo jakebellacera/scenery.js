@@ -315,8 +315,9 @@ please create an individual pull request for each one.
 Suggestions, feedback and bug reports
 -------------------------------------
 
-Bug reports and feature suggestions should be submitted to the Issues section of
-this repository.
+Bug reports and feature suggestions should be submitted to the
+[Issues section](https://github.com/jakebellacera/scenery.js/issues) of this
+repository.
 
 If you have any feedback, please contact
 [@jakebellacera](http://twitter.com/jakebellacera) on Twitter.
