@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>scenery.js tests</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../node_modules/mocha/mocha.css">
+  </head>
+
+  <body>
+    <div id="mocha"></div>
+    <div id="mock_scenery">
+      <div data-scenery-scene="1" data-scenery-sequence="2"></div>
+      <div data-scenery-scene="1"  data-scenery-sequence="1"></div>
+      <div data-scenery-scene="2"></div>
+    </div>
+
+    <script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
+    <script type="text/javascript" src="../node_modules/chai/chai.js"></script>
+    <script type="text/javascript" src="../node_modules/chai-spies/chai-spies.js"></script>
+    <script type="text/javascript" src="../scenery.js"></script>
+    <script type="text/javascript" src="./scenery_tests.js"></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "scenery.js",
+  "version": "0.0.1",
+  "description": "An animation sequencing library.",
+  "main": "scenery.js",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/jakebellacera/scenery.js.git"
+  },
+  "keywords": [
+    "scenery",
+    "animation",
+    "sequencing",
+    "browser"
+  ],
+  "author": {
+    "name": "Jake Bellacera",
+    "email": "hi@jakebellacera.com",
+    "url": "http://jakebellacera.com/"
+  },
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/jakebellacera/scenery.js/issues"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "chai": "*",
+    "chai-spies": "*"
+  }
+}
