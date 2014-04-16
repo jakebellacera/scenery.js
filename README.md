@@ -63,7 +63,7 @@ near the closing `</body>` tag.
 Once scenery.js is on the page, simply set up your scene in your HTML.
 
 ```html
-<div class="my-banner" data-scenery="main" data-scenery-delay-duration="3000">
+<div id="main" data-scenery-delay-duration="3000">
   <p class="text" data-scenery-scene="1" data-scenery-animate-in="opacity: 0">I will hide first.</p>
   <p class="text" data-scenery-scene="2" data-scenery-animate-in="opacity: 0">I will hide second.</p>
   <p class="text" data-scenery-scene="2" data-scenery-animate-in="opacity: 0">I will hide last!</p>
@@ -87,13 +87,12 @@ main.begin();
 
 ### What's going on here?
 
-First, we're initalizing a scene by looking for an element that is
-declaring itself as a scenery with the `data-scenery` attribute. From there,
-scenery.js stores the scenery's scenes into memory by looking for child elements
-that are associating themselves with scenes. Finally, the `begin()` method 
-begins the animation sequence by playing each scene in order and applies the CSS
-included in the `data-scenery-animate-out` attribute when it's that element's
-turn to animate.
+First, we're initalizing a scene by looking for an element that has an `id` of
+`main`. From there, scenery.js stores the scenery's scenes into memory by
+looking for child elements that are associating themselves with scenes. Finally,
+the `begin()` method  begins the animation sequence by playing each scene in
+order and applies the CSS included in the `data-scenery-animate-out` attribute
+when it's that element's turn to animate.
 
 After a scene has been sequenced and another scene is queued to play, Scenery
 delays for as many miliseconds that are specified in
@@ -107,7 +106,7 @@ animate at the same time. By adding the `data-scenery-sequence` attribute to the
 element, you can animate specific elements in order.
 
 ```html
-<div class="my-banner" data-scenery="main" data-scenery-delay-duration="3000">
+<div id="main" data-scenery-delay-duration="3000">
   <p data-scenery-scene="1" data-scenery-animate-in="opacity: 0">I will hide first.</p>
   <p data-scenery-scene="1" data-scenery-sequence="2" data-scenery-animate-in="opacity: 0">I will hide second, right after the first paragraph.</p>
   <p data-scenery-scene="2" data-scenery-animate-in="opacity: 0">I will hide last!</p>
@@ -166,10 +165,6 @@ HTML data-attribute methods
 
 Scenery elements are elements that contain scenes and elements that will be sequenced. All elements that will be animated within the Scenery must be a child of this element.
 
-#### data-scenery="string"
-
-Establishes the element as a Scenery. If this attribute is missing, scenery.js will not be able to find this element.
-
 #### data-scenery-delay-duration="number"
 
 The duration—in miliseconds—to wait between scene changes.
@@ -221,14 +216,11 @@ JavaScript API.
 
 ### Constructor methods
 
-#### new Scenery(name[, settings])
+#### new Scenery(id[, settings])
 
-Initializes a new Scenery by searching the DOM for an element with a
-`data-scenery` attribute equal to `name`. If an object is passed as the second
-argument, then settings can be set. Please refer to the [settings instance 
-attribute](#settings) for the list of settings that can be set.
+Initializes a new Scenery by searching the DOM for an element with an id of `id`. If an element is passed in the `id` argument, then the element will be used instead. If an object is passed as the second argument, then settings can be set. Please refer to the [settings instance attribute](#settings) for the list of settings that can be set.
 
-If scenery.js could not find your Scenery element, then this method will return `null`.
+If Scenery could not find your element, then this method will return `null`.
 
 **The Scenery element will emit a `scenery:initialized` event once the Scenery
 object finishes initializing.**
