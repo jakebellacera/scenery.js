@@ -36,13 +36,10 @@ Table of Contents
     - [currentScene()](#currentscene)
     - [elementsInScene(number)](#elementsinscenenumber)
     - [end(playAnimations = false)](#endplayanimations--false)
-    - [destroy(removeElements = false)](#destroyremoveelements--false)
   - [Instance properties](#instance-properties)
     - [settings](#settings)
 - [JavaScript Events](#javascript-events)
   - [Scenery element events](#scenery-element-events)
-    - [scenery:initialized](#sceneryinitialized)
-    - [scenery:destroyed](#scenerydestroyed)
     - [scenery:began](#scenerybegan)
     - [scenery:ended](#sceneryended)
     - [scenery:paused](#scenerypaused)
@@ -222,9 +219,6 @@ Initializes a new Scenery by searching the DOM for an element with an id of `id`
 
 If Scenery could not find your element, then this method will return `null`.
 
-**The Scenery element will emit a `scenery:initialized` event once the Scenery
-object finishes initializing.**
-
 ### Instance methods
 
 The methods listed below are available to all initialized Scenery objects.
@@ -279,16 +273,6 @@ elements will animate at once.
 
 **The Scenery element will emit a `scenery:ended` event once the Scenery ends.**
 
-#### destroy(removeElements = false)
-
-Destroys a Scenery, but retains the HTML elements by default. If
-`removeElements` is set to `true`, then it will destroy the associated Scenery
-HTML element and it's child nodes as well.
-
-**The Scenery element will emit a `scenery:destroyed` event once the Scenery is
-destroyed. If the Scenery element is being removed from the DOM, then the event
-will fire immediately before the element is removed.**
-
 ### Instance properties
 
 The Scenery object's properties can be altered at any time once the Scenery
@@ -309,16 +293,6 @@ JavaScript Events
 scenery.js is event-driven, so there are plenty of events to listen to.
 
 ### Scenery element events
-
-#### scenery:initialized
-
-Emitted after the Scenery object is initialized.
-
-#### scenery:destroyed
-
-Emitted after the Scenery object is destroyed. If the Scenery element is going
-to be removed from the DOM in addition to the Scenery object being destroyed, then the event will emit right before
-the element is deleted.
 
 #### scenery:began
 
